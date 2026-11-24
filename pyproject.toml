@@ -1,0 +1,43 @@
+[project]
+name = "open-detector-mcp"
+version = "0.1.0"
+description = "MCP server for Open-Detector: paragraph-level AI-text detection for academic papers, with a humanization workflow for agents"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Eslam Allam", email = "eslamallam73@gmail.com" }
+]
+requires-python = ">=3.10"
+keywords = ["mcp", "ai-detection", "academic-writing", "humanizer", "bert"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "mcp>=1.9,<2",
+    "torch>=2.2",
+    "transformers>=4.45,<6",
+    "huggingface-hub>=0.28",
+    "python-docx>=1.1",
+    "pypdf>=5.0",
+]
+
+[project.scripts]
+open-detector-mcp = "open_detector_mcp.server:main"
+open-detector = "open_detector_mcp.cli:main"
+
+[project.urls]
+Repository = "https://github.com/eslam-allam/open-detector-mcp"
+Upstream = "https://github.com/Imalwayshere/Open-Detector"
+Model = "https://huggingface.co/followsci/bert-ai-text-detector"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
